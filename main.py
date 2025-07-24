@@ -42,6 +42,9 @@ def login_mt5():
 @app.route('/')
 def index():
     return "MT5 Backend is running!"
+@app.route('/api/start-ea', methods=['POST'])
+def start_ea():
+    return jsonify({'success': True, 'message': 'start-ea endpoint reached'}), 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
