@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from datetime import datetime, timedelta
 
-# === CONFIGURABLE PARAMETERS ===
+
 STOP_LOSS = 50
 TAKE_PROFIT = 100
 TRAILING_STOP = 30
