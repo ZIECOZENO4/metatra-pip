@@ -49,9 +49,9 @@ finally:
         with open('/tmp/mt5_script.py', 'w') as f:
             f.write(script_content)
         
-        # Run with Wine Python
-        result = subprocess.run(['wine', 'python', '/tmp/mt5_script.py'], 
-                              capture_output=True, text=True, timeout=30)
+        # Run with Wine Python using virtual display
+        result = subprocess.run(['DISPLAY=:99', 'wine', 'python', '/tmp/mt5_script.py'], 
+                              capture_output=True, text=True, timeout=30, env={'DISPLAY': ':99'})
         
         if result.returncode == 0 and result.stdout.strip():
             return json.loads(result.stdout.strip())
@@ -106,7 +106,7 @@ def health_check():
     # Check if Wine and MT5 are available
     try:
         result = subprocess.run(['wine', 'python', '-c', 'import MetaTrader5; print("MT5 available")'], 
-                              capture_output=True, text=True, timeout=10)
+                              capture_output=True, text=True, timeout=10, env={'DISPLAY': ':99'})
         mt5_available = result.returncode == 0
     except:
         mt5_available = False
