@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  mt5-app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DISPLAY=:99
+    volumes:
+      - .:/app
+    command: >
+      sh -c "
+        Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
+        sleep 2
+        python3 main_wine.py
+      " 

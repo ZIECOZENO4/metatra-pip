@@ -88,6 +88,7 @@ def login_mt5():
             
     except Exception as e:
         return jsonify({'success': False, 'message': f'Internal server error: {str(e)}'}), 500
+
 @app.route('/')
 def index():
     return jsonify({
@@ -117,4 +118,4 @@ def health_check():
     })
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=False)
+    app.run(host='0.0.0.0', port=5000, debug=False) 
